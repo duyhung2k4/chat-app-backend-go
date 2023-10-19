@@ -45,6 +45,7 @@ func Router() http.Handler {
 
 			render.JSON(w, r, data)
 		})
+
 		r.Route("/access", func(accessR chi.Router) {
 
 			accessR.Post("/login", accessControler.Login)
