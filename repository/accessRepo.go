@@ -35,7 +35,7 @@ func (a *accessRepo) CheckUser(username string) (*model.Profile, error) {
 	if err := a.db.Model(&model.Profile{}).
 		Preload("Credential").
 		Preload("Credential.Role").
-		Where("user_id = ?", credential.Id).
+		Where("credential_id = ?", credential.Id).
 		First(&profile).Error; err != nil {
 		return nil, err
 	}
@@ -54,7 +54,7 @@ func (a *accessRepo) GetProfile(userId uint) (*model.Profile, error) {
 		Model(&model.Profile{}).
 		Preload("Credential").
 		Preload("Credential.Role").
-		Where("user_id = ?", userId).
+		Where("credential_id = ?", userId).
 		First(&profile).Error; err != nil {
 		return nil, err
 	}
