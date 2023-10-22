@@ -1,8 +1,28 @@
 package model
 
-var MODEL_TYPE = map[string]interface{}{}
+var MODEL_TYPE = map[string]interface{}{
+	"profile":             Profile{},
+	"credential":          Credential{},
+	"role":                Role{},
+	"temporaryCredential": TemporaryCredential{},
+	"text":                Text{},
+	"chatSection":         ChatSection{},
+	"group":               Group{},
+	"groupProfile":        GroupProfile{},
+	"message":             Message{},
+}
 
-var LIST_MODEL_TYPE = map[string]interface{}{}
+var LIST_MODEL_TYPE = map[string]interface{}{
+	"profile":             []Profile{},
+	"credential":          []Credential{},
+	"role":                []Role{},
+	"temporaryCredential": []TemporaryCredential{},
+	"text":                []Text{},
+	"chatSection":         []ChatSection{},
+	"group":               []Group{},
+	"groupProfile":        []GroupProfile{},
+	"message":             []Message{},
+}
 
 type ROLE string
 
