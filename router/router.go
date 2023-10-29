@@ -9,6 +9,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
+	"github.com/go-chi/jwtauth/v5"
 	"github.com/go-chi/render"
 	httpSwagger "github.com/swaggo/http-swagger/v2"
 )
@@ -58,8 +59,8 @@ func Router() http.Handler {
 		})
 
 		r.Route("/", func(protected chi.Router) {
-			// protected.Use(jwtauth.Verifier(config.GetJWT()))
-			// protected.Use(jwtauth.Authenticator)
+			protected.Use(jwtauth.Verifier(config.GetJWT()))
+			protected.Use(jwtauth.Authenticator)
 
 			protected.Route("/access-protected", func(aProtected chi.Router) {
 				aProtected.Post("/login-token", accessControler.LoginWithToken)
